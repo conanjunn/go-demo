@@ -19,4 +19,8 @@ func main() {
 	fmt.Printf("slice1 is %d\n", slice1)
 	fmt.Printf("The length of slice1 is %d\n", len(slice1))
 	fmt.Printf("The capacity of slice1 is %d\n", cap(slice1))
+
+	var sl = make([]string, 5, 10)
+	fmt.Printf("len is %d \n", len(sl))
+	fmt.Printf("cap is %d \n", cap(sl))
 }

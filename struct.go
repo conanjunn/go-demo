@@ -31,6 +31,7 @@ func main() {
 	var pri *primary
 	var result int = pri.Method()
 	fmt.Println(result, "method called")
+	// fmt.Println(pri.GetPri())  报错，传入的不是指针
 }
 
 func (v *primary) Method() int {
