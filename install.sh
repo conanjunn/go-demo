@@ -1,4 +1,10 @@
+set -e
+
 export GOPATH=$(cd `dirname $0`; pwd)
 
-go install main
+if [ -n "$1" ]; then
+  go install $1
+else
+	go install main
+fi
 
