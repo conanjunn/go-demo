@@ -3,8 +3,8 @@ set -e
 export GOPATH=$(cd `dirname $0`; pwd)
 
 if [ -n "$1" ]; then
-  go install $1
+  go install golang/$1
 else
-	go install main
+	go install golang/main
 fi
 
