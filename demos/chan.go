@@ -64,8 +64,8 @@ func Go(ch chan bool, i int) {
 // waitGroup解决多个goroutine并发
 func multiChan2() {
 	wg := sync.WaitGroup{}
-	wg.Add(10)
 	for i := 0; i < 10; i++ {
+		wg.Add(1)
 		go Go2(&wg, i)
 	}
 	wg.Wait()
