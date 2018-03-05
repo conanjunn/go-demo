@@ -2,6 +2,7 @@ package service
 
 import (
 	"encoding/json"
+	// "io/ioutil"
 	"log"
 	"net/http"
 )
@@ -21,10 +22,18 @@ func (this *requestUrl) GetData() {
 	}
 	res, err := client.Do(req)
 	defer res.Body.Close()
-	var result struct {
-		errno  string `json:"errmsg"`
-		errmsg int    `json:"errno"`
+	type ResultSub struct {
+		Roomid        string
+		Status        string
+		Stream_status string
 	}
+	var result struct {
+		Errmsg string      `json:"errmsg"`
+		Errno  int         `json:"errno"`
+		Data   []ResultSub `json:"data"`
+	}
+	// t, _ := ioutil.ReadAll(res.Body)
+	// log.Printf("res.body: %T, %v", t, string(t))
 	err1 := json.NewDecoder(res.Body).Decode(&result)
-	log.Printf("result: %v, %v, %v", result.errno, result.errmsg, err1)
+	log.Printf("result: %v, %v, %v", result, result.Errmsg, err1)
 }
