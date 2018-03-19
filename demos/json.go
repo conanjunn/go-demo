@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	b := []byte(`{"name": "Wednesday", "NNN": "xxx", "age": 6, "Parents": ["Gomez", "Morticia"]}`)
+	b := []byte(`{"name": "Wednesday", "NNN": "xxx", "age": "6", "Parents": ["Gomez", "Morticia"]}`)
 	var f interface{}
 	err := json.Unmarshal(b, &f)
 	if err != nil {
@@ -17,7 +17,7 @@ func main() {
 
 	type FamilyMember struct {
 		Name    string // 首字母必须大写
-		Aa      int    `json:"age"` // 使用tag
+		Aa      int8   `json:"age,string"` // 使用tag
 		Parents []string
 		NNN     string
 	}
@@ -26,6 +26,6 @@ func main() {
 	if err1 != nil {
 		log.Printf("err: %v", err1)
 	} else {
-		log.Printf("m: %v", m)
+		log.Printf("m: %+v", m)
 	}
 }
